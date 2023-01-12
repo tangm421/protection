@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0;
+}
+
+
+/* Base color: saturation 0; */
+
+.hljs,
+.hljs-subst {
+  color: #444;
+}
+
+.hljs-comment {
+  color: #888888;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+
+
+/* User color: hue: 0 */
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060;
+}
+
+
+/* Language color: hue: 90; */
+
+.hljs-literal {
+  color: #78A960;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300;
+}
+
+
+/* Meta color: hue: 200 */
+
+.hljs-meta {
+  color: #1f7199;
+}
+
+.hljs-meta-string {
+  color: #4d99bf;
+}
+
+
+/* Misc effects */
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/Users/luanhui/.vscode/extensions/yzane.markdown-pdf-1.4.4/styles/pdf-export/github.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<center><font size=6 color=red>藏龙岛垃圾场维权群信息公示页</font></center>
+<center><font size=4 color=#FF00FF>藏龙岛垃圾场维权群</font></center>
+<!-- TOC -->
+<ul>
+<li><a href="#1-%E8%A7%84%E5%88%92%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF">1. 规划文件信息</a></li>
+<li><a href="#2-%E5%8F%8D%E9%A6%88%E6%B8%A0%E9%81%93">2. 反馈渠道</a></li>
+<li><a href="#3-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%A1%8C%E5%8A%A8">3. 我们在行动</a>
+<ul>
+<li><a href="#31-%E6%8B%89%E6%A8%AA%E5%B9%85%E8%81%94%E5%90%8D%E7%AD%BE%E5%AD%97%E8%AE%A1%E5%88%92%E5%AE%89%E6%8E%92">3.1. 拉横幅、联名签字计划安排</a></li>
+</ul>
+</li>
+<li><a href="#4-%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB">4. 信息汇总</a></li>
+<li><a href="#5-%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC">5. 加入我们</a>
+<ul>
+<li><a href="#51-%E8%97%8F%E9%BE%99%E5%B2%9B%E5%9E%83%E5%9C%BE%E5%9C%BA%E7%BB%B4%E6%9D%83%E7%BE%A42%E7%BE%A4">5.1. 藏龙岛垃圾场维权群2群</a></li>
+<li><a href="#52-%E8%97%8F%E9%BE%99%E5%B2%9B%E5%9E%83%E5%9C%BE%E5%9C%BA%E7%BB%B4%E6%9D%83%E7%BE%A4%E4%B8%89%E7%BE%A4">5.2. 藏龙岛垃圾场维权群三群</a></li>
+</ul>
+</li>
+<li><a href="#6-%E6%8D%90%E6%AC%BE%E6%B8%A0%E9%81%93">6. 捐款渠道</a>
+<ul>
+<li><a href="#61-%E7%BB%B4%E6%9D%83%E7%BE%A4%E6%94%B6%E6%AC%BE%E7%A0%81">6.1. 维权群收款码</a></li>
+</ul>
+</li>
+<li><a href="#7-%E8%8C%83%E4%BE%8B">7. 范例</a>
+<ul>
+<li><a href="#71-%E7%95%99%E8%A8%80%E5%8F%8D%E9%A6%88%E8%8C%83%E4%BE%8B">7.1. 留言反馈范例</a></li>
+<li><a href="#72-%E9%82%AE%E4%BB%B6%E5%8F%8D%E9%A6%88%E8%8C%83%E4%BE%8B">7.2. 邮件反馈范例</a></li>
+</ul>
+</li>
+<li><a href="#8-%E5%8F%8D%E5%AF%B9%E5%BB%BA%E8%AE%BE%E6%B1%9F%E5%A4%8F%E5%8C%BA%E8%97%8F%E9%BE%99%E5%B2%9B%E7%8E%AF%E5%8D%AB%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83%E8%81%94%E5%90%8D%E4%B9%A6">8. 反对建设江夏区藏龙岛环卫服务中心联名书</a></li>
+</ul>
+<!-- /TOC -->
+<p><br><br></p>
+<p>根据政府文件显示，江夏区自然资源和规划局就<strong>藏龙岛环卫服务中心</strong>工程规划总平面图进行了公示。项目位于绕城高速东侧，栗庙陵园附近。总用地面积<font color=Red size=5>25884.45平方米</font>，建筑面积7898平方米。公示时间为2023-01-09至<font color=Red size=5>2023-01-20</font>。</p>
+<p><img src="./垃圾站地址.jpg" alt="垃圾站地址"></p>
+<font color=#008000 size=4>
+公示期内是我们可以争取的唯一时间窗口！一旦公示完结，就会动工开建！<br>
+在此，呼吁岛内居民朋友为自己的生活栖息地和下一代的健康生活，勇敢地站出来维护自己的合法权益！！
+</font>
+<h1 id="1-%E8%A7%84%E5%88%92%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF">1. 规划文件信息</h1>
+<ul>
+<li><a href="http://gtghj.wuhan.gov.cn/jx/pc-1046-335799.html">武汉江夏经济开发区管理委员会江夏区藏龙岛环卫服务中心工程规划总平面图公示</a>【官网-武汉市江夏区自然资源和规划局】</li>
+<li><a href="http://www.jiangxia.gov.cn/xxgk_22343/zc/qtwj/gsgg_22348/202301/t20230109_2127299.shtml">武汉江夏经济开发区管理委员会江夏区藏龙岛环卫服务中心工程规划总平面图公示</a>【官网-武汉市江夏区人民政府】</li>
+<li><a href="https://mp.weixin.qq.com/s/5h5nQGj7vLQ-Iw99nIxy5w">总面积2.5万平！藏龙岛这里将建环卫服务中心！</a>【微信公众号-藏龙岛资讯圈】</li>
+<li><a href="https://mp.weixin.qq.com/s/hYMX8rLntHtoiFDS7GwUAQ">藏龙岛环卫服务中心工程规划总平面图公示，具体用来做什么？</a>【微信公众号-藏龙岛岛报】</li>
+<li><a href="https://www.toutiao.com/w/1754643863936072/?app=news_article&amp;timestamp=1673457709&amp;use_new_style=1&amp;share_token=C36590E0-88B5-4567-9F20-5B74552D6886&amp;tt_from=weixin&amp;utm_source=weixin&amp;utm_medium=toutiao_ios&amp;utm_campaign=client_share&amp;wxshare_count=1&amp;source=m_redirect">藏龙岛环卫服务中心工程规划总平面图公示！</a>【今日头条头条号-大光谷】</li>
+</ul>
+<h1 id="2-%E5%8F%8D%E9%A6%88%E6%B8%A0%E9%81%93">2. 反馈渠道</h1>
+<ul>
+<li>
+<p>【电话】</p>
+<ul>
+<li>规划公示联系电话：027-87912260郑工</li>
+<li>市长热线：12345</li>
+</ul>
+</li>
+<li>
+<p>【小程序】</p>
+<ul>
+<li>武汉市民热线12345</li>
+<li>大武汉城市留言板</li>
+</ul>
+</li>
+<li>
+<p>【邮件】</p>
+<ul>
+<li>湿地公约秘书处邮箱：ramsar@ramsar.org</li>
+<li>湿地国际（也是湿地公约伙伴组织）官方邮箱：post@wetlands.org</li>
+<li>世界自然保护联盟（也是湿地公约伙伴组织）中国官方邮箱：info.china@iucn.org</li>
+</ul>
+</li>
+<li>
+<p>其他渠道</p>
+<p><a href="#6-%E8%8C%83%E4%BE%8B">留言和邮件内容范例见下文</a></p>
+</li>
+</ul>
+<h1 id="3-%E6%88%91%E4%BB%AC%E5%9C%A8%E8%A1%8C%E5%8A%A8">3. 我们在行动</h1>
+<p><strong>目前相关的行动计划正在筹备中，如拉横幅、联名签字等，本页面会随时更新最新计划安排，希望大家积极参与。</strong></p>
+<h2 id="31-%E6%8B%89%E6%A8%AA%E5%B9%85%E8%81%94%E5%90%8D%E7%AD%BE%E5%AD%97%E8%AE%A1%E5%88%92%E5%AE%89%E6%8E%92">3.1. 拉横幅、联名签字计划安排</h2>
+<pre class="hljs"><code><div>请各小区委托人员2023-01-23 19:00到金地湖山镜领横幅悬挂，领签字版文件（周五晚上18:00收集并寄送到公示地址），领宣传文件，为游行抗议做准备。
+
+2023-01-23 17:00-20:00 在小区出入口
+2023-01-24 07:00-09:00 一定要加大宣传
+
+重要：暂定周五20:00收一版，统一用EMS寄送公示地址（每个小区有个代表收集汇总）。
+</div></code></pre>
+<h1 id="4-%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB">4. 信息汇总</h1>
+<h1 id="5-%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC">5. 加入我们</h1>
+<h2 id="51-%E8%97%8F%E9%BE%99%E5%B2%9B%E5%9E%83%E5%9C%BE%E5%9C%BA%E7%BB%B4%E6%9D%83%E7%BE%A42%E7%BE%A4">5.1. 藏龙岛垃圾场维权群2群</h2>
+<img src="维权群2.jpg" width="30%">
+<h2 id="52-%E8%97%8F%E9%BE%99%E5%B2%9B%E5%9E%83%E5%9C%BE%E5%9C%BA%E7%BB%B4%E6%9D%83%E7%BE%A4%E4%B8%89%E7%BE%A4">5.2. 藏龙岛垃圾场维权群三群</h2>
+<img src="维权群3.png" width="30%">
+<p><em>本群由岛民自发聚集，用于共享信息和组织活动宣传等，希望大家都能积极参与。</em></p>
+<h1 id="6-%E6%8D%90%E6%AC%BE%E6%B8%A0%E9%81%93">6. 捐款渠道</h1>
+<h2 id="61-%E7%BB%B4%E6%9D%83%E7%BE%A4%E6%94%B6%E6%AC%BE%E7%A0%81">6.1. 维权群收款码</h2>
+<img src="维权群收款码.jpg" width="30%">
+<p><em>出于自愿原则，有人的出人，有力的出力，为维护我们的家园贡献自己的一份力量</em></p>
+<p><strong>此收款码用于维权相关的活动资金，由群里财会专业的美女负责管理。活动资金的收支明细一般会在每晚进行公示，公示信息也会同步更新到此页面</strong></p>
+<h1 id="7-%E8%8C%83%E4%BE%8B">7. 范例</h1>
+<h2 id="71-%E7%95%99%E8%A8%80%E5%8F%8D%E9%A6%88%E8%8C%83%E4%BE%8B">7.1. 留言反馈范例</h2>
+<pre class="hljs"><code><div>你好。据武汉市江夏区自然和规划局网站公示，将在藏龙岛栗庙路附近规划建设藏龙岛环卫服务中心。我及其他附近居民都非常反对该项目选址在此处。理由如下。
+一、严重影响交通秩序及交通安全。栗庙路是该区域唯一的主干道，且正在建设中小学，环卫服务中心建成后，会有大量垃圾车出入，另外，燃烧垃圾形成的大量烟雾会极大的降低能见度。以上因素会严重影响车辆的正常行驶，给周边居民出行带来不便，危及居民及小朋友的出行安全，甚至引发交通事故。
+二，严重损害附近居民的身心健康。该选址附近有栗庙社区、长投绿城兰园、金地湖山境、龙苑兰岸、保利清能西海岸等多个小区，距保利清能西海岸小区直线距离仅1.5公里，有美院、纺织大学、武汉外语外事职业学院、武汉体育学院等众多大学，居民人数多且居住密度高。垃圾中含有大量的二氯甲烷等有毒有害物质，其产生的腐坏臭味会危害人体的呼吸系统、循环系统、消化系统、内分泌系统和神经系统，甚至有致癌的风险。此外，垃圾焚烧会产生氮氧化物、二氧化硫、烟尘和可吸入颗粒（PM2.5）等多种有害物质，会严重危害呼吸系统、神经系统、免疫系统及生殖和发育，也有致癌的风险。这些有害物质会扩散直至覆盖整个藏龙岛，给周边居民以及中小学生的身心健康带来巨大的、不可逆转的伤害！
+三、严重破坏优良的生态环境。不久前，《湿地公约》第十四届缔约方大会在武汉举行。习近平总书记在开幕式上指出，湿地保护发展，具有十分重要的意义，我们要守住湿地生态安全边界，为子孙后代留下大美湿地。垃圾场及转运规划需远离动植物保护区，而该选址距离国家级的生态保护区藏龙岛湿地公园的直线距离仅1.6公里，垃圾产生的种种有害物质会严重污染水体和土壤，甚至造成各种稀有动植物的死亡，极大的破害湿地及其生态功能。
+综上，该建设方案有害于百姓的利益，有悖于生态文明建设的基本要求。望有关部门领导仔细研判，慎重考虑。
+</div></code></pre>
+<h2 id="72-%E9%82%AE%E4%BB%B6%E5%8F%8D%E9%A6%88%E8%8C%83%E4%BE%8B">7.2. 邮件反馈范例</h2>
+<p>邮件标题：<code>Need your help to protect CangLong Island National Wetland Park</code></p>
+<p>邮件内容如下：</p>
+<pre class="hljs"><code><div>Dear Convention's Secretariat：
+
+    We know that at the 14th Conference of the Parties, 146 Parties including China and 55 observer organizations signed the International Convention on Wetlands on 22 November 2022. The theme of the conference is &quot;Cherish Wetlands, Harmonious Coexistence between man and Nature&quot;.
+    However, at the beginning of 2023, in Wuhan, where the meeting was held, a national-level wetland public park CangLong Island National Wetland Park will be destroyed. Because a garbage collection center covering 25,884.45 square meters will be built next to the beautiful wetland site.This planned garbage collection center is only 1.3km away as the direct line.About 500 tons of garbage will be disposed of daily and at least 170 garbage trucks will be parked there. This will inevitably damage the surrounding air, soil and groundwater. This new waste treatment center in Wuhan, will have a huge impact on the surrounding environment of the wetland. In severe cases, groundwater will be damaged, oxygen-rich ions in the air will be affected, heavy metals will suddenly exceed the standard, and wetland native animals and migratory birds will be damaged.
+	As residents here, we like this wetland park very much, and we don't want it to be destroyed. Therefore, we firmly oppose the plan to build a garbage dump canter. We hope you can help us to prevent this disaster and protect this beautiful wetland environment.
+    Looking forward to your response.
+
+Sincerely,
+签自己的名字
+</div></code></pre>
+<h1 id="8-%E5%8F%8D%E5%AF%B9%E5%BB%BA%E8%AE%BE%E6%B1%9F%E5%A4%8F%E5%8C%BA%E8%97%8F%E9%BE%99%E5%B2%9B%E7%8E%AF%E5%8D%AB%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83%E8%81%94%E5%90%8D%E4%B9%A6">8. 反对建设江夏区藏龙岛环卫服务中心联名书</h1>
+<pre class="hljs"><code><div>尊敬的领导：
+首先感谢在百忙之中，愿意倾听我们百姓的真实心声，也希望各位领导在了解该事项后能够给予我们片区居民真切的关怀和帮助。
+我们是武汉市江夏区藏龙岛栗庙路片区的居民，作为普通的民众，我们在藏龙岛栗庙路片区工作生活，为了在房价如此之高的今天拥有一套属于自己的房子，老百姓拿出全家三代的积蓄还要贷款。可是最近不知道是出于何种原因的考量，经江夏区自然资源和规划局审查公示，规划在藏龙岛栗庙路附近建藏龙岛环卫服务中心（25,884.45平米的大型的垃圾中转站），引起周边小区全体业主的极度悲愤。
+在这两天中，我们多次打12345市长热线、向市规划局经开区分局、开发区管委会、信访办投诉并未得到明确答复。在此，我们表示坚决反对垃圾中转站建在藏龙岛栗庙路附近。理由有以下几点：
+第一：垃圾站项目不科学，依据不足。根据《城镇环境卫生设施设置标准》，垃圾转运站运行时有大量垃圾收集车及大型垃圾转运车进出，故垃圾转运站所在地道路应宽敞、车流量均衡，与城市交通干道连接简洁等，使垃圾收集车及转运车的运营有较好的通行条件，对转运站附近道路的交通秩序不产生明显的影响。目前藏龙岛只有一条主干道栗庙路，连接沪渝高速，每天路上有各种大货车大卡车，工程运输车，栗庙路上7个小区居民出行都是靠这条主要干道，垃圾中转站建设后再加上不断运行的垃圾运输车，整个栗庙路将造成交通堵塞，水泄不通；
+第二：垃圾站选址不适当，距离多个小区直线距离才1.5公里。附近有栗庙社区、长投绿城兰园、金地湖山境、龙苑兰岸、保利清能西海岸等小区，有美院、纺织大学、武汉外语外事、武汉体育学院等众多大学，有藏龙一小、藏龙三小（建设中）、二中（建设中）等众多中小学，大量垃圾车出入非常影响近200,000居民及小朋友的出行安全，严重干扰正常的交通。华中师范大学学者在《城市环境与城市生态》（2012年6月第25卷3期）发表的学术论文《上海市某生活垃圾中转站污染特征》论文中，可以看出中转站与周边的空气环境息息相关，直接影响到空气质量，在转运生活垃圾过程中不可避免的向外排泄污水、污气，污水长期沉淀于地下后形成永久性污染源几十年都无法清除。危害附近居民及中小学生的身心健康，其垃圾腐臭味还会危害居民的神经系统，机器在作业过程中产生的音波直接影响居民的正常休息；
+第三：垃圾场及转运站规划需要远离动植物保护区。规划地点附近直线1.6公里还有一个国家级的生态保护区藏龙岛湿地公园，根据2022年11月06日湖北武汉第十四届《湿地公约》呼吁，推进湿地保护、修复、管理以及合理和可持续利用的立法和执法，采取湿地保护和修复措施，以应对社会、经济和环境挑战。国家林业和草原局副局长谭光明说，“武汉宣言”是一份凝聚各方共识、展示全球意愿的重要文件，向世界宣告了中国加强生态文明建设、推进湿地保护事业高质量发展的决心和责任。《湿地公约》秘书长穆松达·蒙巴说，“武汉宣言”的通过，展现了各缔约方对湿地保护的高度重视和创新举措。藏龙岛是属于湿地保护的范围，允许建设垃圾中转站将会对湿地产生不可逆转的环境影响。
+综上，该项目对周围环境、民生的消极影响是巨大的。作为该项目附近居民，我们呼吁请党和政府倾听人民的诉求并为人民做主!现藏龙岛小区栗庙路片区居民强烈要求:公示规划主管部门审批同意文件；公示环境影响评价文件，藏龙岛环卫服务中心项目规划，停止在国家级的生态保护区藏龙岛湿地附近建设任何垃圾处理设施的考虑，请政府还我们一片绿水青山，让普通民众能够看到美丽中国的国策在我们身边得到如实的贯彻与执行!
+此致，最强烈的期盼!
+
+藏龙岛栗庙路片区居民
+
+2023年1月11日
+</div></code></pre>
+
+</body>
+</html>
